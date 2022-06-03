@@ -1,8 +1,7 @@
-mkdir -p build/img
-cp -r img/*.png build/img
+mkdir build
 cp -r js build
 cp manifest.json build
 cd build
-zip -r rps.zip ./*
-cp rps.zip ..
+zip -r rpr.zip ./*
+cp rpr.zip ..
 cd ..
