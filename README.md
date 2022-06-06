@@ -1,2 +1,3 @@
-# respectful-private-redirects
-(somewhat limited) private redirect Firefox extension that doesn't need access to all websites.
+# Respectful Private Redirects
+
+Limited privacy redirects for instagram (bibliogram.art), twitter (nitter.net), and reddit (libredd.it), without requiring permission to access all sites.

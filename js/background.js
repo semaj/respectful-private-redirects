@@ -5,31 +5,24 @@ browser.webRequest.onBeforeRequest.addListener(
     const url = new URL(details.url);
     let rest = url.pathname + url.search + url.hash;
     if (rest.length > 1) {
+      console.log(rest)
       if (url.hostname.endsWith("reddit.com")) {
         return { redirectUrl: "https://libredd.it" + rest };
       }
       if (url.hostname.endsWith("instagram.com")) {
-        return { redirectUrl: "https://bibliogram.art" + rest };
+        if (rest.length > 2 && rest[1] == "p" && rest[2] == "/") {
+          return { redirectUrl: "https://bibliogram.art" + rest };
+        } else {
+          return { redirectUrl: "https://bibliogram.art/u" + rest };
+        }
       }
       if (url.hostname.endsWith("twitter.com")) {
         return { redirectUrl: "https://nitter.net" + rest };
-      }
-      if (url.hostname.endsWith("youtu.be")) {
-        return { redirectUrl: "https://piped.kavin.rocks" + rest };
-      }
-      if (url.hostname.endsWith("youtube.com")) {
-        return { redirectUrl: "https://piped.kavin.rocks" + rest };
-      }
-      if (url.hostname.endsWith("youtube-nocookie.com")) {
-        return { redirectUrl: "https://piped.kavin.rocks" + rest };
       }
     }
   },
   {
     urls: [
-      "*://youtu.be/*",
-      "*://*.youtube.com/*",
-      "*://*.youtube-nocookie.com/*",
       "*://*.instagram.com/*",
       "*://*.twitter.com/*",
       "*://*.reddit.com/*"
